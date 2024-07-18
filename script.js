@@ -4,20 +4,20 @@ const taskList = document.getElementById('task-list');
 
 function addTask() {
   const taskText = taskInput.value.trim();
-  if (taskText !== "") {
-    const taskListItem = document.createElement('li');
-    taskListItem.textContent = taskText;
-    const removeButton = document.createElement('button');
-    removeButton.textContent = 'Remove';
-    removeButton.className = 'remove-btn';
-    removeButton.onclick = function() {
-      taskList.removeChild(taskListItem);
-    };
-    taskListItem.appendChild(removeButton);
-    taskList.appendChild(taskListItem);
-    taskInput.value = "";
-  } else {
+  if (taskText === "") {
     alert('Enter task.')
+  } else {
+        const taskListItem = document.createElement('li');
+        taskListItem.textContent = taskText;
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove';
+        removeButton.className = 'remove-btn';
+        removeButton.onclick = function() {
+        taskList.removeChild(taskListItem);
+        };
+        taskListItem.appendChild(removeButton);
+        taskList.appendChild(taskListItem);
+        taskInput.value = "";
   }
 }
 
@@ -28,6 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (event.key === 'Enter') {
       addTask();
     }
-  });
+  }); 
 });
 
